@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <!-- title -->
+    <title>Шифровик и дешифровщик файлов</title>
+
+    <!-- metadata init -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- styles init -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+    <!-- import other .kit files: @import "filename.kit" -->
+    <div class="container">
+        <header class="header">
+            <h1 class="header__title">Шифровик и дешифровщик файлов</h1>
+
+            <nav class="header__nav nav">
+                <div class="nav__item nav__item_here"><a href="/encryptor" class="nav__text _link _hover">Перейти к редактору</a></div>
+                <div class="nav__item"><a href="/encryptor/how-it-works" class="nav__text _link">Как работает шифровка?</a></div>
+            </nav>
+        </header>
+
+
+        <main class="main">
+            <article class="main__settings settings">
+                <section class="settings__item">
+                    <h3 class="settings__item-title">Выбери файл</h3>
+                    <div class="settings__input" id="settings-input-file">
+                        <div class="settings__text">Выбери или перетащи файл</div>
+                        <input type="file">
+                        <div class="settings__tip settings__tip_error" id="file-error-tip">Файл должен быть текстовым.</div>
+                        <div class="settings__tip" id="file-tip">Нажми на этот текст, чтобы выбрать его, или перетащи в окно браузера (на ПК).</div>
+                    </div>
+                </section>
+
+                <section class="settings__item">
+                    <h3 class="settings__item-title">Введи имя файла</h3>
+                    <div class="settings__input" id="settings-input-filename">
+                        <div class="settings__input-area" id="input-filename-area">
+                            <div class="settings__icon" id="icon-filename">
+                                <!-- @import "file.kit" -->
+                            </div>
+                            <input type="text" placeholder="Имя файла (MyText.txt)" id="input-filename">
+                        </div>
+                        <div class="settings__tip settings__tip_error">Имя файла не должно содержать \/:*?"&#60;&#62;|+, а так же точку как в конце</div>
+                        <div class="settings__tip _no-selection" id="filename-tip"><b>Нажми, чтобы установить по умолчанию:</b> <span id="filename">MyText.txt</span></div>
+                    </div>
+                </section>
+
+                <section class="settings__item">
+                    <h3 class="settings__item-title">Введи алфавит</h3>
+                    <div class="settings__input" id="settings__input_alphabet">
+                        <div class="settings__input-area" id="input-alphabet-area">
+                            <div class="settings__icon" id="icon-alphabet">
+                                <!-- @import "Aa.kit" -->
+                            </div>
+                            <input type="text" placeholder="Алфавит ({ruRUenEN01!$})" id="input-alphabet">
+                        </div>
+                        <div class="settings_tips-block">
+                            <div class="settings__tip"><b>Карта замещений</b></div>
+
+                            <div class="settings__replacemap-block">
+                                <div class="settings__replacemap-left">
+                                    <div class="settings__replacemap-item">
+                                        <div class="settings__tip _underscored"><span>{ru}</span></div>
+                                        <div class="settings__tip">абвгдеёжзийклмнопрстуфхцчшщъыьэюя</div>
+                                    </div>
+                                    <div class="settings__replacemap-item">
+                                        <div class="settings__tip _underscored"><span>{RU}</span></div>
+                                        <div class="settings__tip">АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ</div>
+                                    </div>
+                                    <div class="settings__replacemap-item">
+                                        <div class="settings__tip _underscored"><span>{01}</span></div>
+                                        <div class="settings__tip">0123456789</div>
+                                    </div>
+                                </div>
+                                <div class="settings__replacemap-right">
+                                    <div class="settings__replacemap-item">
+                                        <div class="settings__tip _underscored"><span>{en}</span></div>
+                                        <div class="settings__tip">abcdefghijklmnopqrstuvwxyz</div>
+                                    </div>
+                                    <div class="settings__replacemap-item">
+                                        <div class="settings__tip _underscored"><span>{EN}</span></div>
+                                        <div class="settings__tip">ABCDEFGHIJKLMNOPQRSTUVWXYZ</div>
+                                    </div>
+                                    <div class="settings__replacemap-item">
+                                        <div class="settings__tip _underscored"><span>{!$}</span></div>
+                                        <div class="settings__tip">.,?!"”` ‘'’№%@#$&^:;&#60;&#62;&#40;&#41;[]{}/\|+-=_—~</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="settings__tip _no-selection" id="alphabet-tip"><b>Результат (нажми, чтобы перемешать):</b> <span id="alphabet">абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,?!"”` ‘'’№%@$#&^:;&#60;&#62;&#40;&#41;[]{}/\|+-=_—~</span></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="settings__item">
+                    <h3 class="settings__item-title">Введи сдвиг</h3>
+                    <div class="settings__input">
+                        <div class="settings__input-area" id="input-shift-area">
+                            <div class="settings__icon" id="icon-shift">
+                                <!-- @import "shift.kit" -->
+                            </div>
+                            <input type="number" placeholder="0" id="input-shift">
+                        </div>
+                        <div class="settings__tip _no-selection" id="shift-tip"><b>Результат (нажми, чтобы скопировать):</b> <span id="shifted-alphabet">абвгдеёжзийклмнопрстуфхцчшщъыьэюяАБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯabcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.,?!"”` ‘'’№%@$#&^:;&#60;&#62;&#40;&#41;[]{}/\|+-=_—~</span></div>
+                    </div>
+                </section>
+
+                <section class="settings__item">
+                    <h3 class="settings__item-title">Введи ключ</h3>
+                    <div class="settings__input">
+                        <div class="settings__input-area" id="input-key-area">
+                            <div class="settings__icon" id="icon-key">
+                                <!-- @import "key.kit" -->
+                            </div>
+                            <input type="text" placeholder="1" id="input-key">
+                        </div>
+                        <div class="settings__tip settings__tip_error">Ключ должен состоять из цифр или символов алфавита</div>
+                        <div class="settings__tip _no-selection" id="key-tip"><b>Результат (нажми, чтобы скопировать):</b> <span id="key">1</span></div>
+                    </div>
+                </section>
+
+                <div class="settings__item">
+                    <h3>Другие настройки</h3>
+                    <div class="settings__input">
+                        <input type="checkbox" class="settings__checkbox" id="change-handling" checked>
+                        <label for="change-handling" class="settings__label">Применять изменения к зашифрованному тексту, а не к исходному</label>
+                    </div>
+                </div>
+
+                <!-- .settings__item>.settings__item-title+.settings__input>.settings__tip -->
+            </article>
+
+            <article class="main__editor editor">
+                <section>
+                    <h3 class="editor__filename" id="filename-editor">MyText.txt</h3>
+                    <div class="editor__infobar">
+                        <div class="editor__change-mode _no-selection">Посмотреть шифротекст</div>
+                        <div class="editor__download _no-selection"><img src="/encryptor/img/svg/download.svg" alt="Иконка загрузки"></div>
+                    </div>
+                    <div class="editor__edit">
+                        <textarea name="editor" id="editor" class="editor__textarea" placeholder="Файл не выбран"></textarea>
+                    </div>
+                </section>
+            </article>
+
+            <article class="main__info info">
+                <section>
+                    <div class="info__icon"><img src="/encryptor/img/svg/info.svg" alt="Иконка инфо"></div>
+                    <div class="info__text">У данного алфавита длинна (кол-во символов в нем) равна <span id="alphabet-length">165</span>. Если посторонний человек знает только символы, которые входят в алфавит, то, чтобы узнать точное местоположение каждого символа в нём, ему придется перебрать вот столько уникальных вариантов (факториал от кол-ва символов в алфавите): <span id="unique-permutations">5.42e295</span>.</div>
+                </section>
+            </article>
+        </main>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <nav class="footer__nav">
+                <section class="footer__card">
+                    <div class="footer__card-title">Полезное</div>
+                    <div class="footer__card-link"><a href="https://ru.wikipedia.org/wiki/%D0%9A%D0%B2%D0%B0%D0%B4%D1%80%D0%B0%D1%82_%D0%9F%D0%BE%D0%BB%D0%B8%D0%B1%D0%B8%D1%8F">Квадрат Полибия</a></div>
+                    <div class="footer__card-link"><a href="/encryptor/files/PolybiusSquareCipher.js" download>JS-код шифровщика</a></div>
+                    <div class="footer__card-link"><a href="https://github.com/ovbml/encryptor" target="_blank">Скачать исходники</a></div>
+                </section>
+
+                <section class="footer__card">
+                    <div class="footer__card-title _active">Навигация</div>
+                    <div class="footer__card-link footer__card-link_here"><a href="/encryptor">Перейти к редактору</a></div>
+                    <div class="footer__card-link"><a href="/encryptor/how-it-works">Как работает шифровка?</a></div>
+                </section>
+
+                <section class="footer__card">
+                    <div class="footer__card-title">Другое</div>
+                    <div class="footer__card-link"><a href="https://iconscout.com/">Спасибо за иконки #1</a></div>
+                    <div class="footer__card-link"><a href="https://www.iconpacks.net/">Спасибо за иконки #2</a></div>
+                    <div class="footer__card-link"><a href="https://ru.wikipedia.org/wiki/Trebuchet_MS">Шрифт Trebuchet MS</a></div>
+                    <div class="footer__card-link"><a href="https://github.com/source-foundry/Hack">Шрифт Hack</a></div>
+                </section>
+            </nav>
+
+            <div class="footer__bottom">
+                <div class="footer__social-media">
+                    <div class="footer__icon footer__icon_telegram"><a href="https://t.me/ovbml" target="_blank" data-tooltip="Мой Telegram">
+                        <!-- @import "telegram.kit" -->
+                    </a></div>
+                    <div class="footer__icon footer__icon_vk"><a href="https://vk.com/ovbml" target="_blank" data-tooltip="Мой ВКонтакте">
+                        <!-- @import "vk.kit" -->
+                    </a></div>
+                    <div class="footer__icon footer__icon_instagram"><a href="https://www.instagram.com/ovbml" target="_blank" data-tooltip="Мой Instagram">
+                        <!-- @import "instagram.kit" -->
+                    </a></div>
+                    <div class="footer__icon footer__icon_github"><a href="https://github.com/ovbml" target="_blank" data-tooltip="Мой GitHub">
+                        <!-- @import "github.kit" -->
+                    </a></div>
+                </div>
+
+                <div class="footer__sign">@ovbml, 2022 г.</div>
+            </div>
+        </div>
+    </footer>
+
+
+    <div class="drag">
+        <div class="drag__border">
+            <div class="drag__container container">
+                <div class="drag__content">
+                    <div class="drag__icon">
+                        <!-- @import "add-document.kit" -->
+                    </div>
+                    <div class="drag__text">Отпусти, чтобы добавить файл</div>
+                    <div class="drag__tip">Клик по экрану, чтобы скрыть</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <textarea class="copy-area" id="copy-area"></textarea>
+    <a href="" class="download" id="download"></a>
+    <div class="tooltip">
+        <div class="tooltip__text">Это подсказка</div>
+    </div>
+
+    <!-- JavaScript code init -->
+    <script src="js/common.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

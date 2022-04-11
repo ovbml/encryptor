@@ -1,0 +1,142 @@
+@import "adaptive property.scss";
+
+.article {
+    &__item {
+        &_li {
+            display: flex;
+            flex-wrap: nowrap;
+
+        }
+    }
+
+    &__index {
+        font-weight: bold;
+    }
+
+    &__p {
+        @include adaptiv-value('margin-bottom', 25, 7);
+        @include adaptiv-value('line-height', 30, 17);
+    }
+    &__item_li &__p {
+        @include adaptiv-value('margin-left', 13, 5);
+    }
+    & &__item_li:last-child &__p:last-child {
+        margin-bottom: 0;
+    }
+
+    &__table {
+        margin: 0;
+        @include adaptiv-value('margin-bottom', 20, 10);
+        @include adaptiv-value('margin-top', 20, 10);
+        td {
+            @include adaptiv-value('padding-top', 4, 3);
+            @include adaptiv-value('padding-bottom', 4, 3);
+            @include adaptiv-value('padding-right', 24, 14);
+            @include adaptiv-value('padding-left', 24, 14);
+        }
+        tr:nth-child(odd) td {
+            background-color: #F1F1F1;
+        }
+    }
+
+    &__column-title,
+    &__row-title {
+        font-weight: bold;
+    }
+
+
+    &__defenition {
+        &-name-container {
+            vertical-align: middle;
+            text-align: center;
+        }
+        &-block {
+            display: flex;
+        }
+        &-right {
+            @include adaptiv-value('margin-left', 25, 10);
+        }   
+        &-left ._literal {
+            @include adaptiv-value('margin-top', 10, 4);
+        }
+    }
+    &__defenition-right &__p {
+        @include adaptiv-value('margin-bottom', 15, 7);
+    }
+}
+
+.code {
+    color: #CFD2D1;
+    font-size: 16 / 23 * 1rem;
+    margin: 0;
+    background-color: #161819;
+    @include adaptiv-value('border-radius', 10, 4);
+    @include adaptiv-value('padding-left',   25, 13);
+    @include adaptiv-value('padding-right',  25, 13);
+    @include adaptiv-value('padding-top',    25, 10);
+    @include adaptiv-value('padding-bottom', 25, 15);
+    @include adaptiv-value('margin-top',    20, 10);
+    @include adaptiv-value('margin-bottom', 20, 10);
+
+    &__code {
+        overflow-x: scroll;
+        padding-bottom: 3px;
+
+        &::-webkit-scrollbar {
+            @include adaptiv-value('height', 10, 3);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: #9FCA56;
+            border-radius: 5px;
+        }
+    }
+
+    &__definition {
+        color: #55B5DB;
+    }
+    &__variable {
+        color: #55B5DB;
+    }
+    &__operator {
+        color: #9FCA56;
+    }
+    &__number {
+        color: #CD3F45;
+    }
+    &__comment {
+        color: #41535B;
+    }
+    &__text {
+        color: #CFD2D1;
+    }
+    &__attribute {
+        color: #9FCA56;
+    }
+    &__keyword {
+        color: #E6CD69;
+    }
+    &__property {
+        color: #A074C4;
+    }
+    &__string {
+        color: #55B5DB;
+    }
+    &__meta {
+        color: #55B5DB;
+    }
+
+    &__language {
+        color: #FFF;
+        font-family: 'Hack', sans-serif;
+        display: inline-block;
+        padding: 2px 9px;
+        @include adaptiv-value('margin-bottom', 20, 15);
+        @include adaptiv-value('padding-left',  9, 7);
+        @include adaptiv-value('padding-right', 9, 7);
+        @include adaptiv-value('border-radius', 4, 2);
+
+        &_js {
+            background-color: #986801;
+        }
+    }
+}
