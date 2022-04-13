@@ -15,7 +15,6 @@
 
     &__p {
         @include adaptiv-value('margin-bottom', 25, 7);
-        @include adaptiv-value('line-height', 30, 17);
     }
     &__item_li &__p {
         @include adaptiv-value('margin-left', 13, 5);

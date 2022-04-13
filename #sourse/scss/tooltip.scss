@@ -1,0 +1,16 @@
+.tooltip {
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    background-color: #5c626a;
+    color: #fff;
+    padding: 0 9px;
+    border-radius: 2px;
+    font-family: 'Ubuntu', monospace;
+    font-size: 18 / 23 * 1rem;
+    display: none;
+
+    &__text {
+
+    }
+}
