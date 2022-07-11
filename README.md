@@ -1,4 +1,4 @@
-# file encryptor
+# File encryptor
 EN
 - Website that can help you edit files and encrypt them with Polybius Square cipher
 - See Wikipedia: https://en.wikipedia.org/wiki/Polybius_square
